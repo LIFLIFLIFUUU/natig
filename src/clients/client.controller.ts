@@ -36,7 +36,7 @@ export async function login(req: Request, res: Response) {
         // לדוגמה ראוט יכול לגשת רק לפונקציות של קונטרולר
 
         // Fetch all office workers
-        // const client: client = await findByEmailAndPassword(email, password); //await findAll(); 
+        const client: client = await findByEmailAndPassword(email, password); //await findAll(); 
         // const office_worker = allOfficeWorkers.find(
         //     (worker: officeWorker) => worker._id.toString() === _id
         // );
@@ -44,11 +44,11 @@ export async function login(req: Request, res: Response) {
         // console.log('Found office worker:', office_worker); // Log the found office worker
 
         // Check if office worker exists and password matches
-        // if (client) {
-        //     res.status(200).json({ msg: 'Office worker found!',client });
-        // } else {
-        //     res.status(400).json({ msg: 'Invalid ID or password' });
-        // }
+        if (client) {
+            res.status(200).json({ msg: 'Client found!',client });
+        } else {
+            res.status(400).json({ msg: 'Invalid ID or password' });
+        }
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });
     }
